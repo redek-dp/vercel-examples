@@ -8,7 +8,7 @@ $jsondata = json_encode($xmldata);
 
 //file_put_contents("api.json", $jsondata);
 
-header("location: $jsondata");
+print_r($jsondata);
 
 //echo "<a href='/arquivo.json' target='_blank'>/arquivo.json</a>";
 
