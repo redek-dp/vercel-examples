@@ -59,6 +59,23 @@
 
             <div class="space" style="padding-top: 200px;"></div>
             <?php
+    //$uri = $_SERVER['REQUEST_URI'];
+    //$partes = explode("?",$uri);
+
+    $url = $_GET["url"];
+
+    if(isset($url)) {
+        $deposerfile = ($url);
+    } else {
+ 
+        $deposerfile = ('https://davidsonbpe.blogspot.com/');
+    }
+
+    function tinyurl($urls) {
+    return file_get_contents('https://tinyurl.com/api-create.php?url='.$urls);
+    }
+    $urls = tinyurl($deposerfile);
+    
     
     echo '<div class="card card-body container bg-light shadow p-3">';
     echo '<form>';
@@ -71,7 +88,7 @@
     echo '<button class="btn float-right card card-body" type="button" data-clipboard-action="copy" data-clipboard-target=".mdkl">Copy</button>';
     
     echo '<label class="card card-body mdkl" for="FormControlist">';
-    echo '{{magtxt}}';
+    echo 'https://gdoolk.web.app/?'; echo substr("$urls",20);
     echo '</label>';
     echo '</div>';
     
@@ -87,11 +104,11 @@
     ?>
         </div>
 
-       <!-- <div class="tab-pane fade" id="PrivacyTerms" role="tabpanel" aria-labelledby="PrivacyTerms-tab">
+        <!--<div class="tab-pane fade" id="PrivacyTerms" role="tabpanel" aria-labelledby="PrivacyTerms-tab">
             <div class="space" style="padding-top: 90px;"></div>
             <div class="container">
 
-                <div class="card card-body shadow p-3">
+                <div class="card card-body">
                     <h1>Privacy Policy</h1>
 
 
@@ -242,8 +259,6 @@
                             <i class="fas fa-envelope"></i>
                         </a>
 
-                        <button style="bottom: 15px;right: 15px;position: fixed;height: 48px;width: 48px;margin-right: 6px;padding-left: 13px;" class="btn btn btn-light rounded-circle btn-lg ui" type="button" id="btnAddToHomeScreen" tabindex="0" data-trigger="click"><i class="fab fa-chrome"></i></button>
-
                     </div>
 
                     <div class="card text-center">
@@ -278,7 +293,6 @@
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
     </div>
-    
     
     <div class="container text-center">
         
@@ -364,6 +378,7 @@
     
     <div class="space" style="padding-top: 70px;"></div>
 
+
     <footer class="bg-dark container-fluid">
 
         <div class="row">
@@ -377,48 +392,7 @@
         </div>
 
     </footer>
-
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js', {
-                    scope: '/'
-                })
-                .then(function(registration) {
-                    console.log('Service Worker Registered');
-                });
-            navigator.serviceWorker.ready.then(function(registration) {
-                console.log('Service Worker Ready');
-            });
-        }
-
-        var deferredPrompt;
-
-        window.addEventListener('beforeinstallprompt', function(e) {
-            console.log('beforeinstallprompt Event fired');
-            deferredPrompt = e;
-            return false;
-        });
-        btnAddToHomeScreen.addEventListener('click', function() {
-            if (deferredPrompt !== undefined) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then(function(choiceResult) {
-
-                    console.log(choiceResult.outcome);
-
-                    if (choiceResult.outcome == 'dismissed') {
-                        console.log('User cancelled home screen install');
-                    } else {
-                        console.log('User added to home screen');
-                    }
-
-                    deferredPrompt = null;
-                });
-            }
-        });
-
-    </script>
-
+    
 
     <script src="d-framework/js/jquery-3.3.1.slim.min.js"></script>
     <script src="d-framework/js/popper.min.js"></script>
